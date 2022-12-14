@@ -1,0 +1,41 @@
+// ........................
+// https://leetcode.com/problems/ransom-note/submissions/859689824/
+// Runtime: 82ms
+//.....................
+
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+       Dictionary <char, int> MLetters = new();
+
+        for (int i = 0; i < magazine.Length; i++)
+        {
+            char m = magazine[i];
+            int currentC = MLetters.GetValueOrDefault(m, 0);
+            if(MLetters.ContainsKey(m))
+            {
+                MLetters[m]= currentC+1;
+            }
+            else
+            {
+                MLetters.Add(m, currentC + 1);
+            }
+
+        }
+        for (int j = 0; j < ransomNote.Length; j++)
+        {
+            char r = ransomNote[j];
+            int currentC = MLetters.GetValueOrDefault(r, 0);
+
+            if (MLetters.ContainsKey(r) && currentC > 0)
+            {
+                MLetters[r] = currentC-1;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        return true;
+    }
+}
