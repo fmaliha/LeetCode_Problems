@@ -1,0 +1,49 @@
+//....................................................................
+// https://leetcode.com/problems/valid-sudoku/submissions/860706866/
+// Runtime: 109 ms
+// ...................................................................
+
+
+public class Solution {
+    public bool IsValidSudoku(char[][] board) {
+        HashSet<char> row = new();
+        HashSet<char> col = new();
+        HashSet<char> box = new();
+
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (board[i][j] != '.')
+                {
+                    if (!(row.Add(board[i][j])))
+                    {
+                        return false;
+                    }
+                }
+                if (board[j][i] != '.')
+                {
+                    if (!(col.Add(board[j][i])))
+                        {
+                        return false;
+                    }
+                }
+                var x = (i % 3) * 3 + j % 3;
+                var y = (i / 3) * 3 + j / 3;
+                if (board[x][y] != '.')
+                {
+                    if (!(box.Add(board[x][y])))
+                    {
+                        return false;
+                    }
+                }
+    
+            }
+            row.Clear();
+            col.Clear();
+            box.Clear();
+        }
+
+        return true;
+    }
+}
