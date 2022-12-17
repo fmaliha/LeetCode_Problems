@@ -1,0 +1,37 @@
+// .............................................................
+// https://leetcode.com/problems/search-a-2d-matrix/description/
+// Runtime: 109 ms
+//..............................................................
+
+public class Solution {
+    public bool SearchMatrix(int[][] matrix, int target) {
+
+        if(matrix.Length == 0)
+        {
+            return false;
+        }
+
+        int m = matrix.Length, n = matrix[0].Length; 
+        int low_v = 0, high_v = m*n - 1;
+        while(low_v<=high_v)
+        {
+            int mid_v = low_v+ (high_v - low_v)/2;
+            int i = mid_v/n, j = mid_v%n;
+            if(matrix[i][j] < target)
+            {
+                low_v = mid_v+1;
+
+            }
+            else if(matrix[i][j] > target)
+            {
+                high_v = mid_v-1;
+            }
+            else
+            {
+                return true;
+
+            }
+        }
+     return false;   
+    }
+}
