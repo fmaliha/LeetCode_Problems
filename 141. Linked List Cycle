@@ -1,0 +1,32 @@
+// ......................................................................
+// https://leetcode.com/problems/linked-list-cycle/submissions/861470117/
+// Runtime : 104ms
+// Memory : 42.8
+// ......................................................................
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public bool HasCycle(ListNode head) {
+        ListNode slow_node= head, fast_node = head;
+        while(fast_node != null && fast_node.next != null)
+        {
+            fast_node = fast_node.next.next;
+            slow_node = slow_node.next;
+            if(slow_node == fast_node)
+            {
+                return true;
+            }
+        } 
+    return false;    
+    }
+}
