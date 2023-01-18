@@ -1,0 +1,80 @@
+// ..............................................................................
+// Runtime: 87 ms
+// https://leetcode.com/problems/valid-palindrome/submissions/880381603/
+//...............................................................................
+// C# Solution
+// ..............................................................................
+
+public class Solution {
+    public bool IsPalindrome(string s) {
+          if((s.Length == 1) && char.IsLetterOrDigit(s[0]))
+        {
+            return true;
+        }
+
+        char[] Lowered_Palindrome = (s.ToLower()).ToCharArray();
+        StringBuilder sentence = new StringBuilder();
+        foreach (char ch in Lowered_Palindrome)
+        {
+            if(char.IsLetterOrDigit(ch))
+            {
+                sentence.Append(ch);
+            }
+        }
+        int right_pointer = sentence.Length - 1;
+        int left_pointer = 0;
+
+        while(right_pointer - left_pointer > 0)
+        {
+            if (sentence[right_pointer] != sentence[left_pointer])
+            {
+                return false;
+            }
+            right_pointer--; 
+            left_pointer++;
+        }
+        return true;
+    }
+}
+
+
+// ....................................................................................
+// JS Solution 
+// ....................................................................................
+// https://leetcode.com/problems/valid-palindrome/submissions/880385422/
+// Runtime: 69 ms
+// ....................................................................................
+
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function(s) {
+  
+  function replace(string) {
+    return string.replace(/[^A-Z0-9]+/gi, "").toUpperCase();
+  }
+  
+  let str = replace(s);
+
+  let left = 0;
+  let right = str.length - 1;
+  
+
+  while (left < right) {
+    let leftChar = str[left];
+    let rightChar = str[right];
+    
+    if (leftChar === rightChar) {
+      left++;
+      right--;
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
+
+
