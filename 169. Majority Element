@@ -1,0 +1,36 @@
+// ....................................................
+// https://leetcode.com/submissions/detail/904992080/
+// Runtime: 100 ms
+// Memory: 44.1 MB
+//.....................................................
+
+public class Solution {
+    public int MajorityElement(int[] nums) {
+
+        if(nums.Length ==1)
+        {
+            return nums[0];
+        }
+        Dictionary <int,int> dict = new();
+        int n = nums.Length;
+
+        for(int i =0; i<n; i++)
+        {
+            if(dict.ContainsKey(nums[i]))
+            {
+                dict[nums[i]]++;
+
+                if(dict[nums[i]]>n/2 )
+                {
+                    return nums[i];
+                }
+            }
+
+            else
+            {
+                dict.Add(nums[i],1);
+            }
+        }
+        return 0;
+        
+    }
