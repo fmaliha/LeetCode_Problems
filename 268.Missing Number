@@ -1,3 +1,11 @@
+// ...............................................................................
+// https://leetcode.com/problems/missing-number/submissions/905905110/
+// Runtime: 97ms 
+// Memory : 45.7 MB
+// ...............................................................................
+
+
+
 public class Solution {
     public int MissingNumber(int[] nums) {
         
