@@ -1,0 +1,49 @@
+// .................................................................................
+// Runtime: 79 ms
+// Memory: 17.6 MB
+// Submission: https://leetcode.com/problems/two-sum/submissions/957644797/
+// ......................................Python......................................
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        Dictionary = {}
+        for i in range(len(nums)):
+            if target - nums[i] in Dictionary:
+                return [Dictionary[target - nums[i]],i]
+            Dictionary[nums[i]] = i
+        return []
+        
+ // .................................................................................
+// Runtime: 156 ms
+// Memory: 44.3 MB
+// Submission: https://leetcode.com/problems/two-sum/submissions/957631897/
+// ......................................C#......................................
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+       Dictionary<int, int> Dictvalues = new();
+        int al = nums.Length;
+
+        for (int i = 0; i < al; i++)
+        {
+            int difference = target - nums[i];
+            if (Dictvalues.ContainsKey(difference))
+            {
+               return new int[] {Dictvalues[difference],i};
+               //here returning the value of the key stroed in dictionary - Dictvalues[difference]
+               //i is the index where found out that the difference in taret and target value 
+               //already exists in dictionary meaning the other half to complete target 
+               //exists in this index - i, meaning if i=1 is where we found dictionary already have
+               //the half stroed means the other half which we just minused from target is in this current pos
+                // target = 1+ 2, 1 is in dictionary, 2 is in current position 
+            }
+            else if (!Dictvalues.ContainsKey(nums[i]))
+            {
+                Dictvalues.Add(nums[i], i);
+            }
+
+        }
+        return new int[0];
+
+ 
+    }
+    }
+ 
